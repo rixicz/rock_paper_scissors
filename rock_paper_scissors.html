@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <script>
@@ -23,32 +24,22 @@
             return choice
         }
 
-        function playRound(player, computer) {  // for future Patrik - this function can be done in less code
-                                                // by specifying e.g. if (player === "scissors" && computer === "paper")                
-            let result;                         // then there would be only one else statement with the message "Computer won"                    
+        function playRound(player, computer) {               
+            let result;                                            
             if (player === computer) {
                 result = "Draw"
-            } else if (player === "scissors") {
-                if (computer === "rock") {
-                    result = "Computer won"
-                } else {
+            } else if (player === "scissors" && computer === "paper"){
+                result = "You won"
+                
+            } else if (player === "rock" && computer === "scissors") { 
                     result = "You won"
-                }
-            } else if (player === "paper") {
-                if (computer === "rock") {
+
+            } else if (player === "paper" && computer === "rock") {
                     result = "You won"
-                } else {
-                    result = "Computer won"
-                }
-            } else if (player === "rock") {
-                if (computer === "paper") {
-                    result = "Computer won"
-                } else {
-                    result = "You won"
-                }
             } else {
-                result = "You did not type in a valid option. Please, try again." 
-            }
+                    result = "Computer won"
+                }
+            
             console.log(result)
             return result
         }   
