@@ -2,3 +2,20 @@ button {
     font-size: 16px;
     margin: 20px;
 }
+
+button:hover {
+    cursor: pointer;
+}
+
+#rounds {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+#scores {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}

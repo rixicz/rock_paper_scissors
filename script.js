@@ -28,44 +28,57 @@ function playRound(player, computer) {  // for future Patrik - this function can
             result = "You won"
 
     } else {
-            result = "You won"
+            result = "Computer won"
     }
-    console.log("You chose: " + player + " and the computer chose: " + computer)
-    console.log(result)
+    
+    playerChose.textContent = "You: " + player
+    computerChose.textContent = "Computer: " + computer
+    resultPrinted.textContent = result
+    
+    scores.appendChild(playerChose)
+    scores.appendChild(computerChose)
+    scores.appendChild(resultPrinted)
+
+    roundTable.appendChild(scores)
+
     return result
-}   
-
-function playGame() {
-    
-    let playerWins = 0
-    let computerWins = 0
-    let whoWon;
-    
-    for (let i = 1; i <= 5; i++) {
-        
-        let humanChoice = (prompt("Type rock, paper or scissors: ")).toLowerCase() // thought it was not necessary to write a
-        let computerChoice = getComputerChoice()         // whole new function for this                     
-        console.log("Computer chose: " + computerChoice)
-        let msg = playRound(humanChoice, computerChoice)
-        try {
-            if ("You" in msg) {
-                playerWins += 1
-            }
-        } catch {
-            computerWins += 1
-        }
-    }
-
-    if (playerWins > computerWins) {
-        whoWon = "You won the game!"
-    } else {
-        whoWon = "Computer won. Better luck next time."
-    }
-    return whoWon
 }
+
+function overallScores(choice) {
+    if (playerWins < 5 && computerWins < 5) {
+        const msg = playRound(choice, getComputerChoice())
+        if (msg.includes("You")) {
+                playerWins += 1
+                playerScore.textContent = "Your score: " + playerWins
+            } else if (msg.includes("Computer")) {
+            computerWins += 1
+            computerScore.textContent = "Opponent's score: " + computerWins
+            }
+        } else {
+
+        }
+}
+const roundTable = document.getElementById("rounds")
+const scores = document.createElement("div")
+const playerChose = document.createElement("p")
+const computerChose = document.createElement("p")
+const resultPrinted = document.createElement("p")
+const playerScore = document.getElementById("player")
+const computerScore = document.getElementById("opponent")
 const buttons = document.querySelectorAll("button")
+
+let playerWins = 0
+let computerWins = 0
 buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-        playRound(button.id, getComputerChoice())
-    })
+    button.addEventListener("click", () => overallScores(button.id))
 })
+
+if (playerWins > computerWins) {
+    whoWon = "You won the game!"
+} else {
+    whoWon = "Computer won. Better luck next time."
+}
+
+console.log(playerWins)
+
+
