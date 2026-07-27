@@ -28,26 +28,17 @@
             let result;                         // then there would be only one else statement with the message "Computer won"                    
             if (player === computer) {
                 result = "Draw"
-            } else if (player === "scissors") {
-                if (computer === "rock") {
-                    result = "Computer won"
-                } else {
+            } else if (player === "scissors" && computer === "rock") {
                     result = "You won"
-                }
-            } else if (player === "paper") {
-                if (computer === "rock") {
+
+            } else if (player === "paper" && computer === "rock") {
                     result = "You won"
-                } else {
-                    result = "Computer won"
-                }
-            } else if (player === "rock") {
-                if (computer === "paper") {
-                    result = "Computer won"
-                } else {
+
+            } else if (player === "rock" && computer === "scissors") {
                     result = "You won"
-                }
+
             } else {
-                result = "You did not type in a valid option. Please, try again." 
+                    result = "You won"
             }
             console.log(result)
             return result
