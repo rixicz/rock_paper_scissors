@@ -1,0 +1,13 @@
+button {
+    font-size: 16px;
+    margin: 20px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+#selection {
+    display: flex;
+    flex-direction: row;
+}
