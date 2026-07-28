@@ -25,7 +25,7 @@ function playRound(player, computer) {
             result = "You won the round."
 
     } else if (player === "rock" && computer === "scissors") {
-            result = "You won the round"
+            result = "You won the round."
 
     } else {
             result = "Computer won the round."
@@ -60,6 +60,14 @@ function overallScores(choice) {
 }
 
 function gameStart() {
+    playerWins = 0
+    computerWins = 0
+    selection.style.visibility = "visible"
+    roundTable.style.visibility = "visible"
+    playerScore.textContent = "Your score: 0"
+    computerScore.textContent = "Computer score: 0"
+    scoreDiv.appendChild(playerScore)
+    scoreDiv.appendChild(computerScore)
     
     rockBtn.textContent = "Rock"
     paperBtn.textContent = "Paper"
@@ -69,13 +77,10 @@ function gameStart() {
     selection.appendChild(paperBtn)
     selection.appendChild(scissorsBtn)
 
-    playerScore.textContent = "Your score: 0"
-    computerScore.textContent = "Computer score: 0"
-
-    const scoreDiv = document.getElementById("scores")
-    scoreDiv.appendChild(playerScore)
-    scoreDiv.appendChild(computerScore)
-
+    playerChose.textContent = ""
+    computerChose.textContent = ""
+    resultPrinted.textContent = ""
+    whoWon.textContent = ""
 }
 
 function announceWinner() {
@@ -84,14 +89,17 @@ function announceWinner() {
     } else {
         whoWon.textContent = "Computer won. Better luck next time."
     }
-    restartBtn.textContent = "Try again"
+    selection.style.visibility = "hidden"
+    roundTable.style.visibility = "hidden"
     const endState = document.getElementById("end")
     endState.appendChild(whoWon)
-    endState.appendChild(restartBtn)
-    restartBtn.addEventListener("click", () => {location.reload()})
 }
 
-const restartBtn = document.createElement("button")
+
+const scoreDiv = document.getElementById("scores")
+const playerScore = document.createElement("h3")
+const computerScore = document.createElement("h3")
+
 const selection = document.getElementById("selection")
 const rockBtn = document.createElement("button")
 const paperBtn = document.createElement("button")
@@ -100,8 +108,7 @@ rockBtn.id = "rock"
 paperBtn.id = "paper"
 scissorsBtn.id = "scissors"
 
-const playerScore = document.createElement("h3")
-const computerScore = document.createElement("h3")
+const restartBtn = document.createElement("button")
 
 const roundTable = document.getElementById("rounds")
 const scores = document.createElement("div")
@@ -114,6 +121,7 @@ buttons.push(paperBtn)
 buttons.push(scissorsBtn)
 const startBtn = document.getElementById("start")
 const whoWon = document.createElement("h1")
+
 
 startBtn.addEventListener("click", () => gameStart())
 
