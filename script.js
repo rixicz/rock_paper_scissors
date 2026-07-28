@@ -18,7 +18,7 @@ function playRound(player, computer) {
     let result;                   
     if (player === computer) {
         result = "Draw"
-    } else if (player === "scissors" && computer === "rock") {
+    } else if (player === "scissors" && computer === "paper") {
             result = "You won the round."
 
     } else if (player === "paper" && computer === "rock") {
@@ -60,6 +60,7 @@ function overallScores(choice) {
 }
 
 function gameStart() {
+    
     rockBtn.textContent = "Rock"
     paperBtn.textContent = "Paper"
     scissorsBtn.textContent = "Scissors"
