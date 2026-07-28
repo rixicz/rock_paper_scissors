@@ -84,7 +84,6 @@ function announceWinner() {
     } else {
         whoWon.textContent = "Computer won. Better luck next time."
     }
-    const restartBtn = document.createElement("button")
     restartBtn.textContent = "Try again"
     const endState = document.getElementById("end")
     endState.appendChild(whoWon)
@@ -92,6 +91,7 @@ function announceWinner() {
     restartBtn.addEventListener("click", () => {location.reload()})
 }
 
+const restartBtn = document.createElement("button")
 const selection = document.getElementById("selection")
 const rockBtn = document.createElement("button")
 const paperBtn = document.createElement("button")
