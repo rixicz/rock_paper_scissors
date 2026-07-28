@@ -90,7 +90,11 @@ function announceWinner() {
         whoWon.textContent = "Computer won. Better luck next time."
     }
     selection.style.visibility = "hidden"
-    roundTable.style.visibility = "hidden"
+    const paragraphs = roundTable.querySelectorAll('p');
+
+    paragraphs.forEach((item) => {
+        item.textContent = "";
+    });
     const endState = document.getElementById("end")
     endState.appendChild(whoWon)
 }
